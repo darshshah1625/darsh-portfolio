@@ -1,604 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darsh Shah — SDE II @ AWS</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darsh Shah — Software Engineer @ AWS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loading screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loading-content">
-      <div class="loading-logo">
-        <span class="logo-bracket">{</span>DS<span class="logo-bracket">}</span>
-      </div>
-      <div class="loading-bar">
-        <div class="loading-progress"></div>
-      </div>
-      <div class="loading-text">Initializing portfolio...</div>
-    </div>
-  </div>
   
-  <!-- Grid background -->
-  <div class="grid-background"></div>
-  <!-- Scroll progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <!-- Command Palette -->
-  <div class="cmd-palette" id="cmdPalette">
-    <div class="cmd-backdrop"></div>
-    <div class="cmd-modal">
-      <div class="cmd-input-wrap">
-        <span class="cmd-prefix">/</span>
-        <input type="text" class="cmd-input" id="cmdInput" placeholder="Type a command..." autocomplete="off" />
-        <kbd>ESC</kbd>
-      </div>
-      <div class="cmd-results" id="cmdResults">
-        <a href="#hero" class="cmd-item" data-label="Home"><span class="cmd-icon">01</span> Go to Top</a>
-        <a href="#about" class="cmd-item" data-label="About"><span class="cmd-icon">02</span> About Me</a>
-        <a href="#experience" class="cmd-item" data-label="Experience"><span class="cmd-icon">03</span> Work Experience</a>
-        <a href="#projects" class="cmd-item" data-label="Projects"><span class="cmd-icon">04</span> Featured Projects</a>
-        <a href="#skills" class="cmd-item" data-label="Skills"><span class="cmd-icon">05</span> Technical Skills</a>
-        <a href="#education" class="cmd-item" data-label="Education"><span class="cmd-icon">06</span> Education</a>
-        <a href="#contact" class="cmd-item" data-label="Contact"><span class="cmd-icon">07</span> Contact</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nav -->
-  <nav class="nav" id="nav">
-    <a href="#hero" class="nav-logo">
-      <span class="logo-bracket">{</span>DS<span class="logo-bracket">}</span>
+  <!-- Side Navigation -->
+  <nav class="side-nav">
+    <a href="#home" class="nav-dot active" data-section="home">
+      <span class="nav-label">Home</span>
     </a>
-    <div class="nav-center">
-      <a href="#about" class="nav-link" data-index="01">about</a>
-      <a href="#experience" class="nav-link" data-index="02">experience</a>
-      <a href="#projects" class="nav-link" data-index="03">projects</a>
-      <a href="#skills" class="nav-link" data-index="04">skills</a>
-      <a href="#education" class="nav-link" data-index="05">education</a>
-      <a href="#contact" class="nav-link" data-index="06">contact</a>
-    </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
-    </button>
-    <button class="nav-cmd" id="navCmd" aria-label="Command palette">
-      <kbd>/</kbd> cmd
-    </button>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span>
-    </button>
+    <a href="#about" class="nav-dot" data-section="about">
+      <span class="nav-label">About</span>
+    </a>
+    <a href="#experience" class="nav-dot" data-section="experience">
+      <span class="nav-label">Experience</span>
+    </a>
+    <a href="#projects" class="nav-dot" data-section="projects">
+      <span class="nav-label">Projects</span>
+    </a>
+    <a href="#skills" class="nav-dot" data-section="skills">
+      <span class="nav-label">Skills</span>
+    </a>
+    <a href="#contact" class="nav-dot" data-section="contact">
+      <span class="nav-label">Contact</span>
+    </a>
   </nav>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-link"><span>01</span>about</a>
-    <a href="#experience" class="mobile-link"><span>02</span>experience</a>
-    <a href="#projects" class="mobile-link"><span>03</span>projects</a>
-    <a href="#skills" class="mobile-link"><span>04</span>skills</a>
-    <a href="#education" class="mobile-link"><span>05</span>education</a>
-    <a href="#contact" class="mobile-link"><span>06</span>contact</a>
-  </div>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
 
-  <!-- ==================== HERO ==================== -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <div class="hero-badge anim-in">
-        <span class="badge-dot"></span>
-        Available for opportunities
+  <!-- HOME -->
+  <section id="home" class="section">
+    <div class="container">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">darsh@aws:~$</span>
       </div>
-      <h1 class="hero-name anim-in">
-        <span class="scramble-text" data-text="DARSH">DARSH</span>
-        <span class="scramble-text" data-text="SHAH">SHAH</span>
-      </h1>
-      <div class="hero-role anim-in">
-        <div class="role-line"></div>
-        <span>SDE II</span>
-        <div class="role-separator">@</div>
-        <span class="role-company">Amazon Web Services</span>
-        <div class="role-line"></div>
+      
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for opportunities
+        </div>
+        
+        <h1 class="hero-title">
+          Darsh Shah
+        </h1>
+        
+        <p class="hero-subtitle">
+          Software Development Engineer II @ Amazon Web Services
+        </p>
+        
+        <p class="hero-description">
+          I build agentic AI systems that modernize enterprise applications at scale. 
+          Specializing in distributed systems, cloud infrastructure, and LLM-driven transformations.
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">20M+</div>
+            <div class="stat-label">Lines Delivered</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">23+</div>
+            <div class="stat-label">Enterprise Clients</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">4+</div>
+            <div class="stat-label">Years @ AWS</div>
+          </div>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="./resume.pdf" download class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Resume
+          </a>
+        </div>
       </div>
-      <p class="hero-desc anim-in">
-        Building the future of enterprise modernization through
-        <strong class="hero-keyword" data-hover="Multi-agent orchestration, LLM-driven transformations">agentic AI</strong>,
-        <strong class="hero-keyword" data-hover="High-concurrency, fault-tolerant pipelines">distributed systems</strong>, and
-        <strong class="hero-keyword" data-hover="AWS CDK, multi-region, infra automation">cloud infrastructure</strong>
-        at planetary scale.
-      </p>
-      <div class="hero-metrics anim-in">
-        <div class="metric">
-          <div class="metric-value"><span class="counter" data-target="20">0</span>M+</div>
-          <div class="metric-bar"><div class="metric-fill" style="--fill: 90%"></div></div>
-          <div class="metric-label">Lines Delivered</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="counter" data-target="23">0</span>+</div>
-          <div class="metric-bar"><div class="metric-fill" style="--fill: 85%"></div></div>
-          <div class="metric-label">Enterprise Clients</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="counter" data-target="10">0</span>M</div>
-          <div class="metric-bar"><div class="metric-fill" style="--fill: 78%"></div></div>
-          <div class="metric-label">AI-Refactored LOC</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="counter" data-target="4">0</span>+</div>
-          <div class="metric-bar"><div class="metric-fill" style="--fill: 65%"></div></div>
-          <div class="metric-label">Years @ AWS</div>
-        </div>
-      </div>
-      <div class="hero-actions anim-in">
-        <a href="#projects" class="btn-magnetic btn-primary">
-          <span>Explore My Work</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-        </a>
-        <a href="./resume.pdf" download class="btn-magnetic btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          <span>Download Resume</span>
-        </a>
-        <a href="#contact" class="btn-magnetic btn-ghost">
-          <span>Let's Talk</span>
-        </a>
-      </div>
-    </div>
-    <div class="hero-scroll-cue">
-      <div class="scroll-text">SCROLL</div>
-      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ==================== ABOUT ==================== -->
-  <section class="section" id="about">
+  <!-- ABOUT -->
+  <section id="about" class="section">
     <div class="container">
-      <div class="section-label anim-in"><span>01</span> About</div>
-      <div class="about-layout">
-        <div class="about-main anim-in">
-          <h2 class="about-heading">I build the <em>systems</em> that modernize the world's largest enterprises.</h2>
-          <p class="about-body">As a core engineer on <strong>AWS Transform</strong> — the first agentic AI mainframe modernization platform — I architect multi-agent orchestration systems that autonomously migrate millions of lines of legacy enterprise code to cloud-native Java.</p>
-          <p class="about-body">My work lives at the intersection of large language models, distributed systems, and enterprise infrastructure — shaping how Fortune 500 companies transform their technology stacks.</p>
+      <h2 class="section-title">
+        <span class="section-number">01.</span>
+        About Me
+      </h2>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm a Software Development Engineer II at <strong>Amazon Web Services</strong>, 
+            where I architect and build the first agentic AI mainframe modernization platform — 
+            <strong>AWS Transform</strong>.
+          </p>
+          <p>
+            My work focuses on multi-agent orchestration systems that autonomously migrate 
+            millions of lines of legacy enterprise code to modern cloud-native architectures. 
+            I've helped transform technology stacks for 23+ Fortune 500 companies.
+          </p>
+          <p>
+            I hold a Master's in Computer Science from <strong>UT Dallas</strong> and am an 
+            <strong>AWS Certified Solutions Architect</strong>. When I'm not building AI agents, 
+            I'm optimizing distributed systems and designing fault-tolerant infrastructure.
+          </p>
         </div>
-        <div class="about-bento anim-in">
-          <div class="bento-card bento-large spotlight-card">
-            <div class="bento-number">01</div>
-            <div class="achievement-badge">🏆 Core Innovation</div>
+        
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon">🤖</div>
             <h3>Agentic AI</h3>
-            <p>Multi-agent orchestration, A2A communication protocols, LLM-driven code transformations at enterprise scale</p>
-            <div class="bento-glow"></div>
+            <p>Multi-agent orchestration & LLM-driven transformations</p>
           </div>
-          <div class="bento-card spotlight-card">
-            <div class="bento-number">02</div>
+          <div class="highlight-card">
+            <div class="highlight-icon">☁️</div>
             <h3>Cloud Native</h3>
-            <p>AWS CDK, multi-region deployments, infrastructure automation</p>
-            <div class="bento-glow"></div>
+            <p>AWS CDK, multi-region deployments, IaC</p>
           </div>
-          <div class="bento-card spotlight-card">
-            <div class="bento-number">03</div>
-            <h3>Scale</h3>
-            <p>20M+ LOC projects, 23+ customer engagements</p>
-            <div class="bento-glow"></div>
-          </div>
-          <div class="bento-card spotlight-card">
-            <div class="bento-number">04</div>
-            <h3>Reliability</h3>
-            <p>12 P1 incidents/week, canary deployments, DAG orchestration</p>
-            <div class="bento-glow"></div>
-          </div>
-          <div class="bento-card spotlight-card">
-            <div class="bento-number">05</div>
-            <h3>Distributed Sys</h3>
-            <p>High-concurrency services, fault-tolerant pipelines</p>
-            <div class="bento-glow"></div>
+          <div class="highlight-card">
+            <div class="highlight-icon">⚡</div>
+            <h3>Distributed Systems</h3>
+            <p>High-concurrency, fault-tolerant pipelines</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== EXPERIENCE ==================== -->
-  <section class="section" id="experience">
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
     <div class="container">
-      <div class="section-label anim-in"><span>02</span> Experience</div>
-      <h2 class="exp-heading anim-in">Career Timeline</h2>
-    </div>
-    <div class="exp-horizontal-wrap">
-      <div class="exp-track" id="expTrack">
-        <!-- SDE II -->
-        <div class="exp-card anim-in">
-          <div class="exp-card-inner spotlight-card">
-            <div class="exp-period">
-              <span class="exp-year">2024</span>
-              <span class="exp-range">Jul 2024 — Present</span>
+      <h2 class="section-title">
+        <span class="section-number">02.</span>
+        Experience
+      </h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Software Development Engineer II</h3>
+                <p class="company">Amazon Web Services — Agentic AI</p>
+              </div>
+              <span class="timeline-date">Jul 2024 — Present</span>
             </div>
-            <div class="exp-tag">Current</div>
-            <h3 class="exp-title">Software Development Engineer II</h3>
-            <p class="exp-company">Amazon Web Services <span class="exp-team">Agentic AI</span></p>
-            <div class="exp-highlights">
-              <div class="exp-highlight">
-                <span class="exp-stat">1st</span>
-                <span>Agentic AI mainframe modernization platform (AWS Transform)</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">10M</span>
-                <span>Lines of enterprise code refactored via ATX Reforge</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">23+</span>
-                <span>Large-scale customer modernization engagements</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">A2A</span>
-                <span>Agent-to-Agent protocols for distributed AI orchestration</span>
-              </div>
-            </div>
-            <div class="exp-detail-list">
-              <p>Designed multi-agent orchestration enabling LLM-driven code transformations. Led ATX Reforge — a production Claude-based refactoring service. Built LLM rate-limiting with exponential backoff. Operated FastAPI health services within MCP servers. Resolved 12 high-severity incidents per week on-call.</p>
-            </div>
-            <div class="exp-techs">
-              <span>Python</span><span>Java</span><span>LLM</span><span>FastAPI</span><span>AWS</span><span>DAG Orchestration</span>
+            <ul class="timeline-list">
+              <li>Designed multi-agent orchestration enabling LLM-driven code transformations for AWS Transform</li>
+              <li>Led ATX Reforge — a production Claude-based refactoring service processing 10M+ LOC</li>
+              <li>Built LLM rate-limiting with exponential backoff and FastAPI health services within MCP servers</li>
+              <li>Resolved 12 high-severity incidents per week as on-call engineer</li>
+            </ul>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>Java</span>
+              <span>LLM</span>
+              <span>FastAPI</span>
+              <span>AWS</span>
+              <span>DAG Orchestration</span>
             </div>
           </div>
         </div>
-
-        <!-- SDE I -->
-        <div class="exp-card anim-in">
-          <div class="exp-card-inner spotlight-card">
-            <div class="exp-period">
-              <span class="exp-year">2022</span>
-              <span class="exp-range">Jan 2022 — Jun 2024</span>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Software Development Engineer</h3>
+                <p class="company">Amazon Web Services — Agentic AI</p>
+              </div>
+              <span class="timeline-date">Jan 2022 — Jun 2024</span>
             </div>
-            <h3 class="exp-title">Software Development Engineer</h3>
-            <p class="exp-company">Amazon Web Services <span class="exp-team">Agentic AI</span></p>
-            <div class="exp-highlights">
-              <div class="exp-highlight">
-                <span class="exp-stat">3min</span>
-                <span>DB restore (down from 4 hours) via RTS Manager</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">50%</span>
-                <span>Infrastructure overhead reduction via EC2 lifecycle automation</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">40%</span>
-                <span>Faster issue detection via Slack-integrated ops workflows</span>
-              </div>
-              <div class="exp-highlight">
-                <span class="exp-stat">30%</span>
-                <span>Query performance improvement through SQL refactoring</span>
-              </div>
-            </div>
-            <div class="exp-detail-list">
-              <p>Built high-performance Java &amp; Python backend services. Designed AWS Blu Age SDE using CDK (VPCs, Route 53, IAM, KMS, Lambda, CloudWatch). Implemented canary deployments with auto-incident triggering. Automated database migration across PostgreSQL, Oracle, Sybase.</p>
-            </div>
-            <div class="exp-techs">
-              <span>AWS CDK</span><span>Java</span><span>Python</span><span>PostgreSQL</span><span>Oracle</span><span>Lambda</span>
+            <ul class="timeline-list">
+              <li>Built RTS Manager reducing DB restore time from 4 hours to 3 minutes (98.8% improvement)</li>
+              <li>Designed AWS Blu Age SDE using CDK (VPCs, Route 53, IAM, KMS, Lambda, CloudWatch)</li>
+              <li>Implemented canary deployments with auto-incident triggering, reducing overhead by 50%</li>
+              <li>Automated database migration across PostgreSQL, Oracle, and Sybase</li>
+            </ul>
+            <div class="tech-tags">
+              <span>AWS CDK</span>
+              <span>Java</span>
+              <span>Python</span>
+              <span>PostgreSQL</span>
+              <span>Oracle</span>
+              <span>Lambda</span>
             </div>
           </div>
         </div>
-
-        <!-- Intern -->
-        <div class="exp-card anim-in">
-          <div class="exp-card-inner spotlight-card">
-            <div class="exp-period">
-              <span class="exp-year">2021</span>
-              <span class="exp-range">May 2021 — Dec 2021</span>
-            </div>
-            <h3 class="exp-title">Software Engineering Intern</h3>
-            <p class="exp-company">AT&T Labs | Copart</p>
-            <div class="exp-highlights">
-              <div class="exp-highlight">
-                <span class="exp-stat">2x</span>
-                <span>Internships in enterprise telecom &amp; automotive technology</span>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Software Engineering Intern</h3>
+                <p class="company">AT&T Labs | Copart</p>
               </div>
+              <span class="timeline-date">May 2021 — Dec 2021</span>
             </div>
-            <div class="exp-detail-list">
-              <p>Built software solutions in enterprise telecommunications and automotive technology, gaining foundational experience in large-scale systems and professional engineering practices.</p>
-            </div>
-            <div class="exp-techs">
-              <span>Software Engineering</span><span>Enterprise Systems</span>
+            <ul class="timeline-list">
+              <li>Gained foundational experience in enterprise telecommunications and automotive technology</li>
+              <li>Built software solutions for large-scale systems and professional engineering practices</li>
+            </ul>
+            <div class="tech-tags">
+              <span>Software Engineering</span>
+              <span>Enterprise Systems</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="exp-scroll-hint container">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      Scroll horizontally or drag to explore
-    </div>
   </section>
 
-  <!-- ==================== PROJECTS ==================== -->
-  <section class="section" id="projects">
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
     <div class="container">
-      <div class="section-label anim-in"><span>03</span> Projects</div>
-      <h2 class="projects-heading anim-in">Featured Work</h2>
+      <h2 class="section-title">
+        <span class="section-number">03.</span>
+        Featured Projects
+      </h2>
+      
       <div class="projects-grid">
-        <div class="project-card anim-in spotlight-card">
+        <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">🤖</div>
-            <div class="project-status">Production</div>
+            <h3>ATX Reforge</h3>
+            <span class="project-status">Production</span>
           </div>
-          <h3 class="project-title">ATX Reforge</h3>
-          <p class="project-desc">First agentic AI mainframe modernization platform. Multi-agent orchestration system that autonomously refactors 10M+ lines of legacy enterprise code using Claude LLM.</p>
-          <div class="project-impact">
-            <div class="impact-item">
-              <span class="impact-value">10M+</span>
-              <span class="impact-label">LOC Refactored</span>
+          <p class="project-description">
+            First agentic AI mainframe modernization platform. Multi-agent orchestration system 
+            that autonomously refactors 10M+ lines of legacy enterprise code using Claude LLM.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-value">10M+</span>
+              <span class="metric-label">LOC Refactored</span>
             </div>
-            <div class="impact-item">
-              <span class="impact-value">23+</span>
-              <span class="impact-label">Enterprises</span>
+            <div class="metric-item">
+              <span class="metric-value">23+</span>
+              <span class="metric-label">Enterprises</span>
             </div>
           </div>
-          <div class="project-techs">
-            <span>Python</span><span>LLM</span><span>FastAPI</span><span>AWS</span><span>DAG</span>
+          <div class="tech-tags">
+            <span>Python</span>
+            <span>LLM</span>
+            <span>FastAPI</span>
+            <span>AWS</span>
           </div>
         </div>
-
-        <div class="project-card anim-in spotlight-card">
+        
+        <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">⚡</div>
-            <div class="project-status">Production</div>
+            <h3>RTS Manager</h3>
+            <span class="project-status">Production</span>
           </div>
-          <h3 class="project-title">RTS Manager</h3>
-          <p class="project-desc">High-performance database restoration system reducing recovery time from 4 hours to 3 minutes. Automated PostgreSQL, Oracle, and Sybase migrations.</p>
-          <div class="project-impact">
-            <div class="impact-item">
-              <span class="impact-value">98.8%</span>
-              <span class="impact-label">Time Saved</span>
+          <p class="project-description">
+            High-performance database restoration system reducing recovery time from 4 hours to 3 minutes. 
+            Automated PostgreSQL, Oracle, and Sybase migrations.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-value">98.8%</span>
+              <span class="metric-label">Time Saved</span>
             </div>
-            <div class="impact-item">
-              <span class="impact-value">3min</span>
-              <span class="impact-label">Restore Time</span>
+            <div class="metric-item">
+              <span class="metric-value">3min</span>
+              <span class="metric-label">Restore Time</span>
             </div>
           </div>
-          <div class="project-techs">
-            <span>Java</span><span>PostgreSQL</span><span>Oracle</span><span>AWS CDK</span>
+          <div class="tech-tags">
+            <span>Java</span>
+            <span>PostgreSQL</span>
+            <span>Oracle</span>
+            <span>AWS CDK</span>
           </div>
         </div>
-
-        <div class="project-card anim-in spotlight-card">
+        
+        <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">☁️</div>
-            <div class="project-status">Production</div>
+            <h3>AWS Blu Age SDE</h3>
+            <span class="project-status">Production</span>
           </div>
-          <h3 class="project-title">AWS Blu Age SDE</h3>
-          <p class="project-desc">Cloud-native infrastructure automation using AWS CDK. Multi-region deployment with VPCs, Route 53, IAM, KMS, Lambda, and CloudWatch integration.</p>
-          <div class="project-impact">
-            <div class="impact-item">
-              <span class="impact-value">50%</span>
-              <span class="impact-label">Cost Reduction</span>
+          <p class="project-description">
+            Cloud-native infrastructure automation using AWS CDK. Multi-region deployment with 
+            VPCs, Route 53, IAM, KMS, Lambda, and CloudWatch integration.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-value">50%</span>
+              <span class="metric-label">Cost Reduction</span>
             </div>
-            <div class="impact-item">
-              <span class="impact-value">40%</span>
-              <span class="impact-label">Faster Detection</span>
+            <div class="metric-item">
+              <span class="metric-value">40%</span>
+              <span class="metric-label">Faster Detection</span>
             </div>
           </div>
-          <div class="project-techs">
-            <span>AWS CDK</span><span>TypeScript</span><span>Lambda</span><span>CloudWatch</span>
+          <div class="tech-tags">
+            <span>AWS CDK</span>
+            <span>TypeScript</span>
+            <span>Lambda</span>
+            <span>CloudWatch</span>
           </div>
         </div>
-
-        <div class="project-card anim-in spotlight-card">
+        
+        <div class="project-card">
           <div class="project-header">
-            <div class="project-icon">🔄</div>
-            <div class="project-status">Production</div>
+            <h3>A2A Protocol</h3>
+            <span class="project-status">Production</span>
           </div>
-          <h3 class="project-title">A2A Protocol</h3>
-          <p class="project-desc">Agent-to-Agent communication protocol for distributed AI orchestration. Enables seamless multi-agent collaboration in enterprise modernization workflows.</p>
-          <div class="project-impact">
-            <div class="impact-item">
-              <span class="impact-value">Multi</span>
-              <span class="impact-label">Agent Sync</span>
+          <p class="project-description">
+            Agent-to-Agent communication protocol for distributed AI orchestration. 
+            Enables seamless multi-agent collaboration in enterprise modernization workflows.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-value">Multi</span>
+              <span class="metric-label">Agent Sync</span>
             </div>
-            <div class="impact-item">
-              <span class="impact-value">Real-time</span>
-              <span class="impact-label">Orchestration</span>
+            <div class="metric-item">
+              <span class="metric-value">Real-time</span>
+              <span class="metric-label">Orchestration</span>
             </div>
           </div>
-          <div class="project-techs">
-            <span>Python</span><span>FastAPI</span><span>MCP</span><span>LLM</span>
+          <div class="tech-tags">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>MCP</span>
+            <span>LLM</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== SKILLS ==================== -->
-  <section class="section" id="skills">
+  <!-- SKILLS -->
+  <section id="skills" class="section">
     <div class="container">
-      <div class="section-label anim-in"><span>04</span> Skills</div>
-      <h2 class="skills-heading anim-in">Technical Arsenal</h2>
-
-      <!-- Interactive constellation -->
-      <div class="constellation-wrap anim-in">
-        <canvas id="skillConstellation"></canvas>
-        <div class="constellation-hint">Hover over nodes to explore</div>
-      </div>
-
-      <!-- Marquee tickers -->
-      <div class="marquee-section anim-in">
-        <div class="marquee-track">
-          <div class="marquee-content">
-            <span class="marquee-item">Java</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Python</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">TypeScript</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Scala</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">SQL</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Spring Boot</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Distributed Systems</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Microservices</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">REST APIs</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">System Design</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Java</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Python</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">TypeScript</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Scala</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">SQL</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Spring Boot</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Distributed Systems</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Microservices</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">REST APIs</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">System Design</span>
-            <span class="marquee-dot"></span>
+      <h2 class="section-title">
+        <span class="section-number">04.</span>
+        Technical Skills
+      </h2>
+      
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-list">
+            <span class="skill-item">Java</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">Scala</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">JavaScript</span>
           </div>
         </div>
-        <div class="marquee-track marquee-reverse">
-          <div class="marquee-content">
-            <span class="marquee-item">AWS</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Docker</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Kubernetes</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">DynamoDB</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Terraform</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Apache Airflow</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">PySpark</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Apache Beam</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">dbt</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">CloudWatch</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">AWS</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Docker</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Kubernetes</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">DynamoDB</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Terraform</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Apache Airflow</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">PySpark</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">Apache Beam</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">dbt</span>
-            <span class="marquee-dot"></span>
-            <span class="marquee-item">CloudWatch</span>
-            <span class="marquee-dot"></span>
+        
+        <div class="skill-category">
+          <h3>Frameworks & Tools</h3>
+          <div class="skill-list">
+            <span class="skill-item">Spring Boot</span>
+            <span class="skill-item">FastAPI</span>
+            <span class="skill-item">Flask</span>
+            <span class="skill-item">Angular</span>
+            <span class="skill-item">Apache Kafka</span>
+            <span class="skill-item">Apache Spark</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Cloud & DevOps</h3>
+          <div class="skill-list">
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">Kubernetes</span>
+            <span class="skill-item">Terraform</span>
+            <span class="skill-item">AWS CDK</span>
+            <span class="skill-item">CloudWatch</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <div class="skill-list">
+            <span class="skill-item">PostgreSQL</span>
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">Oracle</span>
+            <span class="skill-item">DynamoDB</span>
+            <span class="skill-item">MS SQL Server</span>
+            <span class="skill-item">Sybase</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>AI & Data</h3>
+          <div class="skill-list">
+            <span class="skill-item">LLM Integration</span>
+            <span class="skill-item">Claude AI</span>
+            <span class="skill-item">Amazon Bedrock</span>
+            <span class="skill-item">PySpark</span>
+            <span class="skill-item">Apache Airflow</span>
+            <span class="skill-item">dbt</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Architecture</h3>
+          <div class="skill-list">
+            <span class="skill-item">Microservices</span>
+            <span class="skill-item">Distributed Systems</span>
+            <span class="skill-item">REST APIs</span>
+            <span class="skill-item">System Design</span>
+            <span class="skill-item">Event-Driven</span>
+            <span class="skill-item">Multi-Agent Systems</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== EDUCATION ==================== -->
-  <section class="section" id="education">
+  <!-- CONTACT -->
+  <section id="contact" class="section">
     <div class="container">
-      <div class="section-label anim-in"><span>05</span> Education</div>
-      <div class="edu-layout">
-        <div class="edu-card-flip anim-in">
-          <div class="flip-inner">
-            <div class="flip-front spotlight-card">
-              <div class="edu-degree">M.S.</div>
-              <h3>Computer Science</h3>
-              <p class="edu-school">UT Dallas</p>
-              <p class="edu-small">Click to flip</p>
+      <h2 class="section-title">
+        <span class="section-number">05.</span>
+        Get In Touch
+      </h2>
+      
+      <div class="contact-content">
+        <p class="contact-intro">
+          I'm always open to discussing new opportunities, interesting projects, 
+          or just having a chat about technology. Feel free to reach out!
+        </p>
+        
+        <div class="contact-grid">
+          <a href="mailto:darshshah1816@gmail.com" class="contact-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">darshshah1816@gmail.com</div>
             </div>
-            <div class="flip-back">
-              <div class="edu-gpa">3.82 <span>/ 4.0</span></div>
-              <p>Jan 2020 — May 2022</p>
-              <p>University of Texas at Dallas</p>
-            </div>
-          </div>
-        </div>
-        <div class="edu-card-flip anim-in">
-          <div class="flip-inner">
-            <div class="flip-front spotlight-card">
-              <div class="edu-degree">B.E.</div>
-              <h3>Computer Engineering</h3>
-              <p class="edu-school">GTU</p>
-              <p class="edu-small">Click to flip</p>
-            </div>
-            <div class="flip-back">
-              <div class="edu-gpa">8.46 <span>/ 10</span></div>
-              <p>Aug 2015 — May 2019</p>
-              <p>Gujarat Technological University</p>
-            </div>
-          </div>
-        </div>
-        <div class="edu-card-flip anim-in">
-          <div class="flip-inner">
-            <div class="flip-front spotlight-card cert-front">
-              <div class="edu-degree cert-badge">AWS</div>
-              <h3>Solutions Architect</h3>
-              <p class="edu-school">Associate</p>
-              <p class="edu-small">Click to flip</p>
-            </div>
-            <div class="flip-back cert-back">
-              <div class="edu-gpa">Certified</div>
-              <p>Dec 2024</p>
-              <p>Amazon Web Services</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CONTACT ==================== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-label anim-in"><span>06</span> Contact</div>
-      <div class="contact-layout anim-in">
-        <h2 class="contact-heading">Let's build<br/>something <em>great</em>.</h2>
-        <div class="contact-links">
-          <a href="mailto:darshshah1816@gmail.com" class="contact-link spotlight-card">
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">darshshah1816@gmail.com</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
-          <a href="tel:+16822275419" class="contact-link spotlight-card">
-            <span class="contact-link-label">Phone</span>
-            <span class="contact-link-value">(682) 227-5419</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          
+          <a href="https://linkedin.com/in/darshshah16/" target="_blank" rel="noopener" class="contact-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">darshshah16</div>
+            </div>
           </a>
-          <a href="https://linkedin.com/in/darshshah16/" target="_blank" rel="noopener" class="contact-link spotlight-card">
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">darshshah16</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          
+          <a href="https://github.com/darshshah16" target="_blank" rel="noopener" class="contact-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">darshshah16</div>
+            </div>
           </a>
-          <a href="https://github.com/darshshah16" target="_blank" rel="noopener" class="contact-link spotlight-card">
-            <span class="contact-link-label">GitHub</span>
-            <span class="contact-link-value">darshshah16</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-          </a>
-          <div class="contact-link spotlight-card">
-            <span class="contact-link-label">Location</span>
-            <span class="contact-link-value">Dallas, TX</span>
+          
+          <div class="contact-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Dallas, TX</div>
+            </div>
           </div>
         </div>
       </div>
@@ -607,18 +503,10 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <span>&copy; 2026 Darsh Shah</span>
-      <span class="footer-hint">Press <kbd>/</kbd> to navigate</span>
+    <div class="container">
+      <p>&copy; 2026 Darsh Shah. Built with passion for clean code.</p>
     </div>
   </footer>
-
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 19V5M5 12l7-7 7 7"/>
-    </svg>
-  </button>
 
   <script src="js/main.js"></script>
 </body>
