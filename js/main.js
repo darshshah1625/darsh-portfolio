@@ -1,45 +1,8 @@
-// ===== CODE RAIN =====
-(function() {
-  const canvas = document.getElementById('codeRain');
-  const ctx = canvas.getContext('2d');
-  const keywords = ['AWS','Lambda','Java','Python','def','class','import','async','await','const','let','func','return','if','for','try','catch','deploy','build','agent','LLM','API','CDK','VPC','IAM','EC2','ECS','S3','RDS','DynamoDB','Docker','K8s','git','push','merge','CI/CD','SELECT','FROM','WHERE','JOIN','INSERT','index','query','scale','node','pipe','flow','DAG','transform','reforge','migrate','scan','test','run'];
-  let columns, drops;
-
-  function init() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const fontSize = 13;
-    columns = Math.floor(canvas.width / (fontSize * 3));
-    drops = Array.from({length: columns}, () => Math.random() * -100);
-  }
-  init();
-  window.addEventListener('resize', init);
-
-  function draw() {
-    ctx.fillStyle = 'rgba(11, 11, 20, 0.08)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '12px JetBrains Mono, monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const word = keywords[Math.floor(Math.random() * keywords.length)];
-      const x = i * (canvas.width / columns);
-      const y = drops[i] * 18;
-      const alpha = 0.03 + Math.random() * 0.06;
-      ctx.fillStyle = `rgba(56, 189, 248, ${alpha})`;
-      ctx.fillText(word, x, y);
-      if (y > canvas.height && Math.random() > 0.98) drops[i] = 0;
-      drops[i] += 0.4 + Math.random() * 0.3;
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
 // ===== LOADING SCREEN =====
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loadingScreen').classList.add('hidden');
-  }, 2000);
+  }, 1500);
 });
 
 // ===== THEME TOGGLE =====
@@ -52,64 +15,6 @@ themeToggle?.addEventListener('click', () => {
   const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
   localStorage.setItem('theme', theme);
 });
-
-// ===== PARTICLE CURSOR =====
-(function() {
-  const canvas = document.getElementById('particleCursor');
-  const ctx = canvas.getContext('2d');
-  const particles = [];
-  const maxParticles = 30;
-  let mouse = { x: -100, y: -100 };
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    
-    // Create particle
-    if (particles.length < maxParticles) {
-      particles.push({
-        x: mouse.x,
-        y: mouse.y,
-        size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        life: 1,
-        decay: Math.random() * 0.02 + 0.01
-      });
-    }
-  });
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.x += p.speedX;
-      p.y += p.speedY;
-      p.life -= p.decay;
-      
-      if (p.life <= 0) {
-        particles.splice(i, 1);
-        continue;
-      }
-      
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(56, 189, 248, ${p.life * 0.5})`;
-      ctx.fill();
-    }
-    
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
 
 // ===== SCROLL PROGRESS =====
 const scrollProgress = document.getElementById('scrollProgress');
@@ -307,18 +212,7 @@ const spotlightStyle = document.createElement('style');
 spotlightStyle.textContent = `.spotlight-card::before{left:var(--spot-x,50%);top:var(--spot-y,50%)}`;
 document.head.appendChild(spotlightStyle);
 
-// ===== MAGNETIC BUTTONS =====
-document.querySelectorAll('.btn-magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translate(0, 0)';
-  });
-});
+// Magnetic buttons removed for cleaner interaction
 
 // ===== HORIZONTAL SCROLL DRAG =====
 const expWrap = document.querySelector('.exp-horizontal-wrap');
