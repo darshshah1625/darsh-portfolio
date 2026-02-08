@@ -35,6 +35,82 @@
   draw();
 })();
 
+// ===== LOADING SCREEN =====
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loadingScreen').classList.add('hidden');
+  }, 2000);
+});
+
+// ===== THEME TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') document.body.classList.add('light-mode');
+
+themeToggle?.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+});
+
+// ===== PARTICLE CURSOR =====
+(function() {
+  const canvas = document.getElementById('particleCursor');
+  const ctx = canvas.getContext('2d');
+  const particles = [];
+  const maxParticles = 30;
+  let mouse = { x: -100, y: -100 };
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    
+    // Create particle
+    if (particles.length < maxParticles) {
+      particles.push({
+        x: mouse.x,
+        y: mouse.y,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 2,
+        speedY: (Math.random() - 0.5) * 2,
+        life: 1,
+        decay: Math.random() * 0.02 + 0.01
+      });
+    }
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.life -= p.decay;
+      
+      if (p.life <= 0) {
+        particles.splice(i, 1);
+        continue;
+      }
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(56, 189, 248, ${p.life * 0.5})`;
+      ctx.fill();
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
 // ===== SCROLL PROGRESS =====
 const scrollProgress = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
@@ -266,6 +342,19 @@ if (expWrap) {
 // ===== EDUCATION FLIP CARDS =====
 document.querySelectorAll('.edu-card-flip').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('flipped'));
+});
+
+// ===== BACK TO TOP =====
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+backToTop?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // ===== SKILL CONSTELLATION =====
