@@ -1,15 +1,18 @@
-// ===== THEME TOGGLE =====
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme') || 'dark';
+// ===== CUSTOM CURSOR =====
+const cursorDot = document.querySelector('[data-cursor-dot]');
+const cursorOutline = document.querySelector('[data-cursor-outline]');
 
-if (savedTheme === 'light') {
-  document.body.classList.add('light');
-}
-
-themeToggle?.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  const theme = document.body.classList.contains('light') ? 'light' : 'dark';
-  localStorage.setItem('theme', theme);
+window.addEventListener('mousemove', (e) => {
+  const posX = e.clientX;
+  const posY = e.clientY;
+  
+  cursorDot.style.left = `${posX}px`;
+  cursorDot.style.top = `${posY}px`;
+  
+  cursorOutline.animate({
+    left: `${posX}px`,
+    top: `${posY}px`
+  }, { duration: 500, fill: 'forwards' });
 });
 
 // ===== SMOOTH SCROLL =====
@@ -18,147 +21,149 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
-// ===== ACTIVE SECTION TRACKING =====
-const sections = document.querySelectorAll('.section');
-const navDots = document.querySelectorAll('.nav-dot');
+// ===== COUNTER ANIMATION =====
+const animateCounter = (element) => {
+  const target = parseInt(element.dataset.count);
+  const duration = 2000;
+  const increment = target / (duration / 16);
+  let current = 0;
+  
+  const updateCounter = () => {
+    current += increment;
+    if (current < target) {
+      element.textContent = Math.floor(current);
+      requestAnimationFrame(updateCounter);
+    } else {
+      element.textContent = target;
+    }
+  };
+  
+  updateCounter();
+};
 
+// ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
 const observerOptions = {
-  root: null,
-  rootMargin: '-50% 0px -50% 0px',
-  threshold: 0
+  threshold: 0.2,
+  rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const sectionId = entry.target.id;
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
       
-      // Update nav dots
-      navDots.forEach(dot => {
-        dot.classList.remove('active');
-        if (dot.dataset.section === sectionId) {
-          dot.classList.add('active');
-        }
-      });
+      // Animate counters when hero stats are visible
+      if (entry.target.classList.contains('hero-stats')) {
+        const counters = entry.target.querySelectorAll('[data-count]');
+        counters.forEach(counter => animateCounter(counter));
+      }
+      
+      observer.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
-sections.forEach(section => observer.observe(section));
-
-// ===== SCROLL ANIMATIONS =====
-const animateOnScroll = () => {
-  const elements = document.querySelectorAll('.timeline-item, .project-card, .skill-category, .contact-card, .highlight-card');
-  
-  elements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight * 0.85;
-    
-    if (isVisible) {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }
-  });
-};
-
-// Initial setup for scroll animations
-document.querySelectorAll('.timeline-item, .project-card, .skill-category, .contact-card, .highlight-card').forEach(el => {
+// Observe elements for animation
+document.querySelectorAll('.work-card, .expertise-item, .skill-group, .contact-card, .hero-stats').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
+  el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
 });
 
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
-
-// ===== COUNTER ANIMATION =====
-const animateCounter = (element, target) => {
-  const duration = 2000;
-  const start = 0;
-  const increment = target / (duration / 16);
-  let current = start;
-  
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(current);
-    }
-  }, 16);
-};
-
-// Trigger counter animation when hero section is visible
-const heroObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const statValues = entry.target.querySelectorAll('.stat-value');
-      statValues.forEach(stat => {
-        const text = stat.textContent;
-        const number = parseInt(text.match(/\d+/)?.[0] || 0);
-        if (number > 0) {
-          const span = document.createElement('span');
-          span.textContent = '0';
-          stat.textContent = '';
-          stat.appendChild(span);
-          stat.append(text.replace(/\d+/, ''));
-          animateCounter(span, number);
-        }
-      });
-      heroObserver.unobserve(entry.target);
-    }
+// ===== WORK CARD HOVER EFFECT =====
+document.querySelectorAll('[data-work-card]').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
   });
-}, { threshold: 0.5 });
+});
 
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-  heroObserver.observe(heroStats);
-}
+// ===== PARALLAX SCROLL EFFECT =====
+let ticking = false;
 
-// ===== KEYBOARD SHORTCUTS =====
-document.addEventListener('keydown', (e) => {
-  // Press 'T' to toggle theme
-  if (e.key === 't' || e.key === 'T') {
-    if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      themeToggle.click();
-    }
-  }
-  
-  // Press numbers 1-6 to navigate sections
-  const num = parseInt(e.key);
-  if (num >= 1 && num <= 6) {
-    const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
-    const section = document.getElementById(sections[num - 1]);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
+      
+      // Parallax for hero elements
+      const heroTitle = document.querySelector('.hero-title');
+      const heroSubtitle = document.querySelector('.hero-subtitle');
+      
+      if (heroTitle && heroSubtitle) {
+        heroTitle.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroSubtitle.style.transform = `translateY(${scrolled * 0.2}px)`;
+      }
+      
+      ticking = false;
+    });
+    
+    ticking = true;
   }
 });
+
+// ===== NAV BACKGROUND ON SCROLL =====
+const nav = document.querySelector('.nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    nav.style.background = 'rgba(0, 0, 0, 0.95)';
+    nav.style.borderBottom = '1px solid rgba(99, 102, 241, 0.2)';
+  } else {
+    nav.style.background = 'rgba(0, 0, 0, 0.8)';
+    nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// ===== GRADIENT ANIMATION =====
+const gradientTexts = document.querySelectorAll('.gradient-text');
+gradientTexts.forEach(text => {
+  text.addEventListener('mouseenter', () => {
+    text.style.backgroundSize = '200% 200%';
+    text.style.animation = 'gradientShift 2s ease infinite';
+  });
+  
+  text.addEventListener('mouseleave', () => {
+    text.style.animation = 'none';
+  });
+});
+
+// Add gradient animation keyframes
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+`;
+document.head.appendChild(style);
 
 // ===== PERFORMANCE OPTIMIZATION =====
-// Debounce scroll events
-let scrollTimeout;
-const originalScrollHandler = window.onscroll;
-window.addEventListener('scroll', () => {
-  if (scrollTimeout) {
-    window.cancelAnimationFrame(scrollTimeout);
-  }
-  scrollTimeout = window.requestAnimationFrame(() => {
-    animateOnScroll();
-  });
-}, { passive: true });
+// Disable cursor on mobile
+if (window.matchMedia('(max-width: 768px)').matches) {
+  document.body.style.cursor = 'default';
+  if (cursorDot) cursorDot.style.display = 'none';
+  if (cursorOutline) cursorOutline.style.display = 'none';
+}
 
-// ===== CONSOLE EASTER EGG =====
-console.log('%c👋 Hey there!', 'font-size: 20px; font-weight: bold; color: #3b82f6;');
-console.log('%cLooking at the code? I like your style!', 'font-size: 14px; color: #a1a1aa;');
-console.log('%cFeel free to reach out: darshshah1816@gmail.com', 'font-size: 14px; color: #10b981;');
-console.log('%c\nKeyboard shortcuts:\n• Press T to toggle theme\n• Press 1-6 to navigate sections', 'font-size: 12px; color: #71717a; font-family: monospace;');
+// ===== CONSOLE MESSAGE =====
+console.log('%c👋 Hey there!', 'font-size: 24px; font-weight: bold; color: #6366f1;');
+console.log('%cInterested in the code? Let\'s talk!', 'font-size: 14px; color: #8b5cf6;');
+console.log('%cdarshshah1816@gmail.com', 'font-size: 14px; color: #10b981; font-weight: bold;');
