@@ -1,14 +1,26 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#000;color:#fff;overflow-x:hidden}
 
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+
 /* Start Screen */
-.start-screen{position:fixed;inset:0;z-index:10001;background:#000;display:flex;align-items:center;justify-content:center}
-.start-content{position:relative;z-index:2;text-align:center}
-.start-title{font-size:clamp(3rem,10vw,6rem);font-weight:900;letter-spacing:0.05em;margin-bottom:1rem;background:linear-gradient(45deg,#e50914,#ff6b6b,#e50914);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.start-screen{position:fixed;inset:0;z-index:10001;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.start-content{position:relative;z-index:2;text-align:center;animation:floatIn 1.5s ease-out}
+@keyframes floatIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.start-title{font-size:clamp(3rem,10vw,6rem);font-weight:900;letter-spacing:0.05em;margin-bottom:1rem;background:linear-gradient(45deg,#e50914,#ff6b6b,#e50914);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 80px rgba(229,9,20,0.5);position:relative}
+.start-title::before{content:'DARSH SHAH';position:absolute;inset:0;background:linear-gradient(45deg,#e50914,#ff6b6b,#e50914);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:blur(20px);opacity:0.5;z-index:-1;animation:gradientShift 3s ease infinite}
 @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.start-subtitle{font-size:1.5rem;color:rgba(255,255,255,0.7);margin-bottom:3rem;letter-spacing:0.1em}
-.start-button{display:inline-flex;align-items:center;gap:1rem;padding:1.25rem 3rem;background:#e50914;border:none;border-radius:4px;color:#fff;font-size:1.125rem;font-weight:600;cursor:pointer;transition:all 0.3s;box-shadow:0 0 30px rgba(229,9,20,0.5)}
+.start-subtitle{font-size:1.5rem;color:rgba(255,255,255,0.7);margin-bottom:3rem;letter-spacing:0.1em;animation:fadeInUp 1.5s ease-out 0.3s backwards}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.start-button{display:inline-flex;align-items:center;gap:1rem;padding:1.25rem 3rem;background:#e50914;border:none;border-radius:4px;color:#fff;font-size:1.125rem;font-weight:600;cursor:pointer;transition:all 0.3s;box-shadow:0 0 30px rgba(229,9,20,0.5);position:relative;overflow:hidden;animation:fadeInUp 1.5s ease-out 0.6s backwards,buttonPulse 2s ease-in-out infinite 2s}
+@keyframes buttonPulse{0%,100%{box-shadow:0 0 30px rgba(229,9,20,0.5)}50%{box-shadow:0 0 50px rgba(229,9,20,0.8),0 0 80px rgba(229,9,20,0.4)}}
+.start-button::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transform:translateX(-100%);transition:transform 0.6s}
+.start-button:hover::before{transform:translateX(100%)}
+.start-button::after{content:'';position:absolute;inset:-2px;background:linear-gradient(45deg,#e50914,#ff6b6b,#e50914);background-size:200% 200%;border-radius:4px;z-index:-1;opacity:0;animation:gradientShift 3s ease infinite;transition:opacity 0.3s}
 .start-button:hover{transform:scale(1.05);box-shadow:0 0 50px rgba(229,9,20,0.8)}
+.start-button:hover::after{opacity:1}
+.start-button svg{transition:transform 0.3s}
+.start-button:hover svg{transform:translateX(5px)}
 #particlesCanvas{position:absolute;inset:0;z-index:1}
 
 /* Netflix Intro */
@@ -33,7 +45,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 #profileBg{position:absolute;inset:0;z-index:1}
 .profile-container{position:relative;z-index:2;text-align:center;max-width:1200px;padding:2rem}
 .profile-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:400;margin-bottom:3rem;letter-spacing:-0.01em}
-.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,200px));gap:2rem;justify-content:center}
+.profiles{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
 .profile-card{cursor:pointer;transition:transform 0.3s ease;position:relative}
 .profile-card:hover{transform:scale(1.1)}
 .profile-avatar{width:150px;height:150px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:8px;display:flex;align-items:center;justify-content:center;border:3px solid transparent;transition:all 0.3s;margin:0 auto 1rem;position:relative;overflow:hidden}
