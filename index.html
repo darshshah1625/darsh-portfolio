@@ -7,250 +7,187 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
-  <!-- Click to Start -->
-  <div class="start-screen" id="startScreen">
-    <div class="start-content">
-      <h1 class="start-title">DARSH SHAH</h1>
-      <p class="start-subtitle">Software Engineer @ AWS</p>
-      <button class="start-button" id="startButton">
-        <span>Click to Enter</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
-    <canvas id="particlesCanvas"></canvas>
-  </div>
 
-  <!-- Netflix Intro -->
-  <div class="intro" id="intro">
-    <div class="intro-bg"></div>
-    <div class="intro-content">
-      <h1 class="intro-name">
-        <span class="letter">D</span>
-        <span class="letter">A</span>
-        <span class="letter">R</span>
-        <span class="letter">S</span>
-        <span class="letter">H</span>
-      </h1>
+  <!-- Netflix Intro with Logo -->
+  <div class="netflix-intro" id="netflixIntro">
+    <div class="netflix-container">
+      <h1 class="netflix-logo" id="logoElement">DS</h1>
     </div>
   </div>
 
-  <!-- Profile Selection -->
-  <div class="profile-selection" id="profileSelection">
-    <canvas id="profileBg"></canvas>
-    <div class="profile-container">
-      <h1 class="profile-title">Who's watching?</h1>
-      <div class="profiles">
-        <div class="profile-card" data-profile="developer">
-          <div class="profile-avatar">
-            <div class="avatar-glow"></div>
-            <span class="profile-icon">👨‍💻</span>
-          </div>
-          <p class="profile-name">Developer</p>
+  <!-- Profile Selection (Browse) -->
+  <div class="browse-container" id="profileSelection">
+    <p class="who-is-watching">Who's Watching?</p>
+    <div class="profiles">
+      <div class="profile-card" data-profile="recruiter" data-bg="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif">
+        <div class="image-container">
+          <div class="profile-image blue"></div>
         </div>
-        <div class="profile-card" data-profile="recruiter">
-          <div class="profile-avatar">
-            <div class="avatar-glow"></div>
-            <span class="profile-icon">💼</span>
-          </div>
-          <p class="profile-name">Recruiter</p>
+        <span class="profile-name">Recruiter</span>
+      </div>
+      <div class="profile-card" data-profile="developer" data-bg="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGNidDl5emZpejY2eGFxa2I4NW0zZGNpbWRlbnBrZ3N2dWhhbzM1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TFPdmm3rdzeZ0kP3zG/giphy.gif">
+        <div class="image-container">
+          <div class="profile-image grey"></div>
         </div>
-        <div class="profile-card" data-profile="stalker">
-          <div class="profile-avatar">
-            <div class="avatar-glow"></div>
-            <span class="profile-icon">🕵️</span>
-          </div>
-          <p class="profile-name">Stalker</p>
+        <span class="profile-name">Developer</span>
+      </div>
+      <div class="profile-card" data-profile="stalker" data-bg="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExc28yMjMyZmJ6eWtxbmNwdDV6cXk4dWZmcjFhZms2cXBjN2h5ZDJjeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QjZXUBUr89CkiWLPjL/giphy.gif">
+        <div class="image-container">
+          <div class="profile-image red"></div>
         </div>
-        <div class="profile-card" data-profile="adventurer">
-          <div class="profile-avatar">
-            <div class="avatar-glow"></div>
-            <span class="profile-icon">🚀</span>
-          </div>
-          <p class="profile-name">Adventurer</p>
+        <span class="profile-name">Stalker</span>
+      </div>
+      <div class="profile-card" data-profile="adventurer" data-bg="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmxib24ycWo2cjlmazh0NGV5NTZ2Mzd2YWY0M2tvam9oYXBwYW1ocCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ERKMnDK6tkzJe8YVa3/giphy-downsized-large.gif">
+        <div class="image-container">
+          <div class="profile-image yellow"></div>
         </div>
+        <span class="profile-name">Adventurer</span>
       </div>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
-    <!-- Header -->
-    <header class="netflix-header">
-      <div class="header-left">
-        <div class="logo">DS</div>
-        <nav class="nav-links">
-          <a href="#hero">Home</a>
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-      <div class="header-right">
-        <button class="back-button" id="backButton" title="Back to Profile Selection">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          <span>Change Profile</span>
-        </button>
-        <a href="./resume.pdf" download class="resume-link">Resume</a>
-        <div class="profile-icon-small" id="profileIconSmall">👨‍💻</div>
-      </div>
-    </header>
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-      <div class="hero-bg">
-        <div class="hero-gradient"></div>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-left">
+        <a class="navbar-logo" href="#">DS</a>
+        <ul class="navbar-links">
+          <li><a href="#" class="nav-home">Home</a></li>
+          <li><a href="#work-experience">Professional</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Hire Me</a></li>
+        </ul>
       </div>
-      <div class="hero-content">
-        <h1 class="hero-title" id="heroTitle">Building AI Systems That Transform Enterprise Software</h1>
-        <p class="hero-description" id="heroDescription">
-          Software Development Engineer II @ AWS | Architecting agentic AI platforms
-        </p>
-        <div class="hero-buttons">
-          <button class="btn-play">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            View Projects
-          </button>
-          <button class="btn-info">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-            More Info
-          </button>
+      <div class="navbar-right">
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">20M+</span>
-            <span class="stat-label">LOC Delivered</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">23+</span>
-            <span class="stat-label">Clients</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">4+</span>
-            <span class="stat-label">Years @ AWS</span>
+        <div class="profile-icon" id="profileIcon"></div>
+      </div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar (mobile) -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-logo">DS</div>
+      <ul>
+        <li><a href="#" class="nav-home sidebar-link">Home</a></li>
+        <li><a href="#work-experience" class="sidebar-link">Professional</a></li>
+        <li><a href="#skills" class="sidebar-link">Skills</a></li>
+        <li><a href="#projects" class="sidebar-link">Projects</a></li>
+        <li><a href="#contact" class="sidebar-link">Hire Me</a></li>
+      </ul>
+    </div>
+
+    <!-- Profile Page Banner -->
+    <div class="profile-page" id="profilePage">
+      <div class="profile-banner">
+        <div class="banner-content">
+          <h1 class="banner-headline" id="bannerHeadline"></h1>
+          <p class="banner-description" id="bannerDescription"></p>
+          <div class="banner-buttons">
+            <a href="./resume.pdf" download class="banner-button play-button">
+              <span class="icon-container">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="spacer"></span>
+              <span class="btn-label btn-label-dark">Resume</span>
+            </a>
+            <a href="https://linkedin.com/in/darshshah16/" target="_blank" class="banner-button more-info-button">
+              <span class="icon-container">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              </span>
+              <span class="spacer"></span>
+              <span class="btn-label btn-label-light">LinkedIn</span>
+            </a>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Top Picks Row -->
+    <div class="top-picks-row" id="topPicksRow">
+      <h2 class="row-title" id="topPicksTitle"></h2>
+      <div class="card-row" id="topPicksCards"></div>
+    </div>
+
+    <!-- Continue Watching Row -->
+    <div class="continue-watching-row" id="continueWatchingRow">
+      <h2 class="row-title" id="continueWatchingTitle"></h2>
+      <div class="card-row" id="continueWatchingCards"></div>
+    </div>
+
+    <!-- Skills Section -->
+    <section class="skills-container" id="skills">
+      <div id="skillsContent"></div>
     </section>
 
-    <!-- Projects -->
-    <section class="projects-section" id="projects">
-      <h2 class="section-title" id="projectsTitle">Featured Projects</h2>
-      <div class="projects-row">
-        <div class="project-card">
-          <div class="project-thumbnail">
-            <div class="project-bg project-bg-1"></div>
-            <div class="project-overlay">
-              <h3>ATX Reforge</h3>
-              <p>Agentic AI Platform</p>
-              <div class="project-details">
-                <span>10M+ LOC refactored</span>
-                <span>23+ enterprises</span>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-match">98% Match</div>
-            <div class="project-year">2024</div>
-            <div class="project-tag">Production</div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumbnail">
-            <div class="project-bg project-bg-2"></div>
-            <div class="project-overlay">
-              <h3>RTS Manager</h3>
-              <p>Database Restoration</p>
-              <div class="project-details">
-                <span>98.8% time saved</span>
-                <span>3min restore</span>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-match">95% Match</div>
-            <div class="project-year">2023</div>
-            <div class="project-tag">Production</div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumbnail">
-            <div class="project-bg project-bg-3"></div>
-            <div class="project-overlay">
-              <h3>AWS Blu Age SDE</h3>
-              <p>Cloud Infrastructure</p>
-              <div class="project-details">
-                <span>50% cost reduction</span>
-                <span>Multi-region</span>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-match">92% Match</div>
-            <div class="project-year">2022</div>
-            <div class="project-tag">Production</div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-thumbnail">
-            <div class="project-bg project-bg-4"></div>
-            <div class="project-overlay">
-              <h3>A2A Protocol</h3>
-              <p>Multi-Agent System</p>
-              <div class="project-details">
-                <span>Real-time sync</span>
-                <span>Distributed AI</span>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-match">90% Match</div>
-            <div class="project-year">2024</div>
-            <div class="project-tag">Production</div>
-          </div>
-        </div>
-      </div>
+    <!-- Projects Section -->
+    <section class="projects-container" id="projects">
+      <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
-    <!-- About -->
+    <!-- Work Experience Section -->
+    <section class="timeline-section" id="work-experience">
+      <div class="timeline-header">
+        <h2 class="timeline-title">Work Experience & Education Timeline</h2>
+      </div>
+      <div class="vertical-timeline" id="timeline"></div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-container" id="certifications">
+      <div class="certifications-grid" id="certificationsGrid"></div>
+    </section>
+
+    <!-- About Section -->
     <section class="about-section" id="about">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="about-title">About Me</h2>
       <div class="about-content" id="aboutContent">
         <p>Loading...</p>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact-section" id="contact">
-      <h2 class="section-title">Get in Touch</h2>
-      <div class="contact-grid">
-        <a href="mailto:darshshah1816@gmail.com" class="contact-card">
-          <div class="contact-icon">�</div>
-          <p>Email</p>
-        </a>
-        <a href="https://linkedin.com/in/darshshah16/" target="_blank" class="contact-card">
-          <div class="contact-icon">💼</div>
-          <p>LinkedIn</p>
-        </a>
-        <a href="https://github.com/darshshah16" target="_blank" class="contact-card">
-          <div class="contact-icon">💻</div>
-          <p>GitHub</p>
-        </a>
-        <div class="contact-card">
-          <div class="contact-icon">📍</div>
-          <p>Dallas, TX</p>
+    <!-- Contact Section -->
+    <section class="contact-container" id="contact">
+      <div class="linkedin-badge-custom">
+        <div class="badge-avatar-placeholder">DS</div>
+        <div class="badge-content">
+          <h3 class="badge-name">Darsh Shah</h3>
+          <p class="badge-title">SDE II @ Amazon Web Services</p>
+          <p class="badge-description">Architecting agentic AI platforms for enterprise transformation</p>
+          <p class="badge-company">Amazon Web Services</p>
+          <a href="https://linkedin.com/in/darshshah16/" target="_blank" rel="noopener noreferrer" class="badge-link">
+            View Profile
+          </a>
+        </div>
+      </div>
+      <div class="contact-header">
+        <p>I'm always up for a chat or a coffee! Feel free to reach out.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <span class="contact-icon-emoji">&#x2709;</span>
+          <a href="mailto:darshshah1816@gmail.com" class="contact-link">darshshah1816@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon-emoji">&#x1F4BB;</span>
+          <a href="https://github.com/darshshah16" target="_blank" class="contact-link">github.com/darshshah16</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon-emoji">&#x1F4CD;</span>
+          <span class="contact-link">Dallas, TX</span>
+        </div>
+        <div class="contact-fun">
+          <p>Or catch up over a coffee</p>
+          <span class="coffee-icon">&#x2615;</span>
         </div>
       </div>
     </section>
