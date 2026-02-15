@@ -71,6 +71,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .nav-links a{color:#e5e5e5;text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.3s}
 .nav-links a:hover{color:#b3b3b3}
 .header-right{display:flex;align-items:center;gap:1.5rem}
+.back-button{display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:0.5rem 1rem;color:#e5e5e5;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.3s;backdrop-filter:blur(10px)}
+.back-button:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.3);transform:translateX(-2px)}
+.back-button svg{transition:transform 0.3s}
+.back-button:hover svg{transform:translateX(-3px)}
 .resume-link{color:#e5e5e5;text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.3s}
 .resume-link:hover{color:#b3b3b3}
 .profile-icon-small{width:32px;height:32px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;cursor:pointer;transition:transform 0.3s}
@@ -78,8 +82,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Hero */
 .hero{position:relative;height:80vh;display:flex;align-items:center;padding:0 4rem;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a0000,#000,#001a1a);animation:heroBg 20s ease infinite}
-@keyframes heroBg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a0000 0%,#000 25%,#001a1a 50%,#1a001a 75%,#000 100%);background-size:400% 400%;animation:heroBg 20s ease infinite}
+@keyframes heroBg{0%,100%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:50% 100%}75%{background-position:0% 50%}}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(229,9,20,0.15),transparent 50%),radial-gradient(circle at 80% 50%,rgba(0,150,255,0.1),transparent 50%);animation:bgPulse 8s ease-in-out infinite}
+@keyframes bgPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.03) 2px,rgba(255,255,255,0.03) 4px);pointer-events:none}
 .hero-gradient{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.9),transparent 70%)}
 .hero-content{position:relative;z-index:2;max-width:600px}
 .hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;letter-spacing:-0.01em}
@@ -96,10 +103,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .stat-label{font-size:0.875rem;color:#808080}
 
 /* Sections */
-section{padding:3rem 4rem}
+section{padding:3rem 4rem;position:relative;overflow:hidden}
+section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(229,9,20,0.05),transparent 70%);pointer-events:none;z-index:0}
+section > *{position:relative;z-index:1}
 .section-title{font-size:1.5rem;font-weight:600;margin-bottom:1.5rem}
 
 /* Projects */
+.projects-section{background:linear-gradient(180deg,#000 0%,#0a0a0a 50%,#000 100%);position:relative}
+.projects-section::before{background:radial-gradient(circle at 30% 50%,rgba(229,9,20,0.08),transparent 60%),radial-gradient(circle at 70% 50%,rgba(0,150,255,0.05),transparent 60%);animation:sectionPulse 10s ease-in-out infinite}
+@keyframes sectionPulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
 .projects-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
 .project-card{cursor:pointer;transition:transform 0.3s}
 .project-card:hover{transform:scale(1.05)}
@@ -121,13 +133,21 @@ section{padding:3rem 4rem}
 .project-tag{padding:0.125rem 0.5rem;background:rgba(255,255,255,0.1);border-radius:2px}
 
 /* About */
-.about-content{max-width:800px;line-height:1.8;color:#b3b3b3}
+.about-section{background:linear-gradient(135deg,#0a0000 0%,#000a0a 50%,#00000a 100%);background-size:200% 200%;animation:aboutBg 15s ease infinite;position:relative}
+@keyframes aboutBg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.about-section::before{background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(229,9,20,0.02) 10px,rgba(229,9,20,0.02) 20px)}
+.about-content{max-width:800px;line-height:1.8;color:#b3b3b3;background:rgba(0,0,0,0.3);padding:2rem;border-radius:8px;border:1px solid rgba(229,9,20,0.1);backdrop-filter:blur(10px)}
 .about-content p{margin-bottom:1rem}
 
 /* Contact */
+.contact-section{background:linear-gradient(180deg,#000 0%,#0a0000 50%,#000 100%);position:relative}
+.contact-section::before{background:radial-gradient(circle at 50% 50%,rgba(229,9,20,0.1),transparent 70%);animation:contactPulse 8s ease-in-out infinite}
+@keyframes contactPulse{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:0.8;transform:scale(1.2)}}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.contact-card{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2rem;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:4px;text-decoration:none;color:#e5e5e5;transition:transform 0.3s}
-.contact-card:hover{transform:scale(1.05)}
+.contact-card{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2rem;background:linear-gradient(135deg,rgba(26,26,26,0.8),rgba(42,42,42,0.8));border-radius:8px;text-decoration:none;color:#e5e5e5;transition:all 0.3s;border:1px solid rgba(229,9,20,0.2);backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.contact-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(229,9,20,0.1),transparent);opacity:0;transition:opacity 0.3s}
+.contact-card:hover{transform:translateY(-5px);border-color:rgba(229,9,20,0.5);box-shadow:0 10px 30px rgba(229,9,20,0.3)}
+.contact-card:hover::before{opacity:1}
 .contact-icon{font-size:2.5rem}
 
 /* Footer */

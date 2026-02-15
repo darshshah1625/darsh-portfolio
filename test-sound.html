@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sound Test</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    button {
+      padding: 2rem 4rem;
+      font-size: 1.5rem;
+      background: #e50914;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #f40612;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="testSound()">🔊 Test TUDUM Sound</button>
+  
+  <script>
+    function testSound() {
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const sampleRate = audioContext.sampleRate;
+        const duration = 2;
+        const numSamples = sampleRate * duration;
+        const buffer = audioContext.createBuffer(1, numSamples, sampleRate);
+        const data = buffer.getChannelData(0);
+        
+        // Generate TUDUM waveform
+        for (let i = 0; i < numSamples; i++) {
+          const t = i / sampleRate;
+          let value = 0;
+          
+          // TU (first hit)
+          if (t >= 0.1 && t < 0.9) {
+            const env = Math.exp(-(t - 0.1) * 8);
+            value += Math.sin(2 * Math.PI * 110 * (t - 0.1)) * env * 0.5;
+          }
+          
+          // DUM (second hit)
+          if (t >= 0.5 && t < 2.0) {
+            const env = Math.exp(-(t - 0.5) * 3);
+            value += Math.sin(2 * Math.PI * 82 * (t - 0.5)) * env * 0.7;
+          }
+          
+          data[i] = value;
+        }
+        
+        const source = audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        source.start(0);
+        
+        alert('✅ Sound should be playing! If you hear it, the main site will work too.');
+        console.log('🔊 TUDUM playing! Context state:', audioContext.state);
+        
+      } catch (e) {
+        alert('❌ Error: ' + e.message + '\n\nYour browser may not support Web Audio API.');
+        console.error(e);
+      }
+    }
+  </script>
+</body>
+</html>

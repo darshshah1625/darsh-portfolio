@@ -260,78 +260,51 @@ function initProfileBg() {
   animate();
 }
 
-// Netflix tudum sound - ULTIMATE VERSION
+// Netflix tudum sound - Using base64 encoded audio
 function playTudum() {
   try {
-    // Create audio context
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioContext = new AudioContext();
+    // Create a simple beep sound using data URI
+    const audio = new Audio();
     
-    // Resume context if suspended (browser autoplay policy)
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
+    // Generate a simple TUDUM sound effect
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const sampleRate = audioContext.sampleRate;
+    const duration = 2;
+    const numSamples = sampleRate * duration;
+    const buffer = audioContext.createBuffer(1, numSamples, sampleRate);
+    const data = buffer.getChannelData(0);
+    
+    // Generate TUDUM waveform
+    for (let i = 0; i < numSamples; i++) {
+      const t = i / sampleRate;
+      let value = 0;
+      
+      // TU (first hit at 0.1s)
+      if (t >= 0.1 && t < 0.9) {
+        const env = Math.exp(-(t - 0.1) * 8);
+        value += Math.sin(2 * Math.PI * 110 * (t - 0.1)) * env * 0.5;
+      }
+      
+      // DUM (second hit at 0.5s)
+      if (t >= 0.5 && t < 2.0) {
+        const env = Math.exp(-(t - 0.5) * 3);
+        value += Math.sin(2 * Math.PI * 82 * (t - 0.5)) * env * 0.7;
+      }
+      
+      data[i] = value;
     }
     
-    const now = audioContext.currentTime;
+    // Play the buffer
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioContext.destination);
+    source.start(0);
     
-    // Create master gain for overall volume control
-    const masterGain = audioContext.createGain();
-    masterGain.connect(audioContext.destination);
-    masterGain.gain.setValueAtTime(0.3, now);
-    
-    // Create the iconic TUDUM sound
-    const createNote = (freq, startTime, duration, volume, type = 'sine') => {
-      const osc = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      const filter = audioContext.createBiquadFilter();
-      
-      // Connect: oscillator -> filter -> gain -> master
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(masterGain);
-      
-      // Configure oscillator
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, startTime);
-      
-      // Configure filter for warmth
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(2000, startTime);
-      filter.Q.setValueAtTime(1, startTime);
-      
-      // Envelope
-      gain.gain.setValueAtTime(0, startTime);
-      gain.gain.linearRampToValueAtTime(volume, startTime + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-      
-      osc.start(startTime);
-      osc.stop(startTime + duration);
-    };
-    
-    // TU (first hit) - Deep bass
-    createNote(110, now + 0.1, 0.8, 0.8, 'sine');        // A2
-    createNote(220, now + 0.1, 0.8, 0.4, 'sine');        // A3
-    createNote(55, now + 0.1, 0.8, 0.3, 'triangle');     // Sub bass
-    
-    // DUM (second hit) - Even deeper
-    createNote(82.41, now + 0.5, 1.8, 1.0, 'sine');      // E2
-    createNote(164.81, now + 0.5, 1.8, 0.5, 'sine');     // E3
-    createNote(41.20, now + 0.5, 1.8, 0.4, 'triangle');  // Sub bass
-    
-    console.log('🔊 TUDUM! Audio context state:', audioContext.state);
-    
-    // Visual feedback
-    setTimeout(() => {
-      console.log('🎵 Sound should be playing now!');
-    }, 100);
+    console.log('🔊 TUDUM playing!');
     
   } catch (e) {
     console.error('❌ Audio error:', e);
-    // Show visual feedback instead
-    const startScreen = document.getElementById('startScreen');
-    if (startScreen) {
-      startScreen.style.animation = 'pulse 0.5s ease-in-out';
-    }
+    console.log('💡 Sound blocked by browser. User interaction detected but audio context may need permission.');
   }
 }
 
@@ -451,9 +424,32 @@ document.querySelector('.btn-info')?.addEventListener('click', () => {
 
 // Profile icon - back to selection
 document.getElementById('profileIconSmall')?.addEventListener('click', () => {
-  document.getElementById('mainContent').classList.remove('active');
-  setTimeout(() => {
-    document.getElementById('mainContent').style.display = 'none';
-    document.getElementById('profileSelection').style.display = 'flex';
-  }, 300);
+  goBackToProfiles();
 });
+
+// Back button - back to selection
+document.getElementById('backButton')?.addEventListener('click', () => {
+  goBackToProfiles();
+});
+
+// Function to go back to profile selection
+function goBackToProfiles() {
+  const mainContent = document.getElementById('mainContent');
+  const profileSelection = document.getElementById('profileSelection');
+  
+  mainContent.style.opacity = '0';
+  mainContent.style.transform = 'scale(0.95)';
+  mainContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+  
+  setTimeout(() => {
+    mainContent.classList.remove('active');
+    mainContent.style.display = 'none';
+    mainContent.style.opacity = '1';
+    mainContent.style.transform = 'scale(1)';
+    profileSelection.style.display = 'flex';
+    profileSelection.classList.add('active');
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }, 300);
+}
