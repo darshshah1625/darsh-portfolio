@@ -63,13 +63,23 @@ const profileContent = {
     headline: 'Level 99 Engineer — Main Quest: Ship or Be Shipped',
     description: 'Quest: Build Unbreakable Systems | Class: Full-Stack Engineer | Guild: Amazon Web Services | Level: 99',
     aboutContent: `
-      <p><strong>Welcome, Traveler! This is my epic journey...</strong></p>
-      <p><strong>Chapter I: The Beginning (2015-2019)</strong></p>
-      <p>Born in the ancient lands of Gujarat, India. Trained in the sacred arts of Computer Engineering. Defeated the final boss: Bachelor's Degree. Unlocked skill: Problem Solving.</p>
-      <p><strong>Chapter II: The Quest for Knowledge (2020-2022)</strong></p>
-      <p>Journeyed across the seas to Dallas, Texas. Entered the legendary University of Texas at Dallas. Mastered advanced Computer Science techniques. Boss defeated: Master's Thesis (Critical Hit: 3.82 GPA). Side quests completed at AT&T Labs and Copart.</p>
+      <p><strong>Welcome, Traveler! This is the epic saga of a code warrior...</strong></p>
+
+      <p><strong>Chapter I: The Origin (2015-2019)</strong></p>
+      <p>Born in the ancient lands of Gujarat, India. Trained for 4 years in the sacred arts of Computer Engineering at Gujarat Technological University. Defeated the final boss: Bachelor's Degree (8.46/10). Unlocked skills: Algorithms, Data Structures, Problem Solving.</p>
+
+      <p><strong>Chapter II: The Crossing (2020-2022)</strong></p>
+      <p>Journeyed across the seas to Dallas, Texas. Entered the legendary University of Texas at Dallas. Mastered advanced Computer Science techniques — distributed systems, AI, and cloud computing. Boss defeated: Master's Thesis (Critical Hit: 3.82 GPA).</p>
+
+      <p><strong>Side Quests Completed:</strong></p>
+      <ul>
+        <li><strong>AT&T Labs (Summer 2021):</strong> Tamed PySpark dragons to process 100+ TB of 5G network data. Accelerated pipeline speed by 30x.</li>
+        <li><strong>Copart (2021-2022):</strong> Forged React Native mobile apps wielded by thousands of daily users. Cut load times by 40%.</li>
+      </ul>
+
       <p><strong>Chapter III: The AWS Saga (2022-Present)</strong></p>
-      <p>Joined the elite guild of Amazon Web Services. Current rank: Software Development Engineer II. Main quest: Building distributed systems and AI-powered tools that serve Fortune 500 clients.</p>
+      <p>Joined the elite guild of Amazon Web Services. Rose from SDE I to SDE II in 2.5 years. Now building distributed systems and AI-powered tools that serve Fortune 500 clients.</p>
+
       <p><strong>Legendary Achievements Unlocked:</strong></p>
       <ul>
         <li><strong>Speed Demon:</strong> Reduced dungeon clear time by 98.8% (4 hours to 3 minutes)</li>
@@ -77,15 +87,20 @@ const profileContent = {
         <li><strong>Infrastructure Mage:</strong> Automated CI/CD pipelines reducing manual deployment by 90%</li>
         <li><strong>Guardian:</strong> Maintained 99.99% uptime defending production servers</li>
         <li><strong>Multi-Class:</strong> Backend, mobile, data pipelines, cloud infra — no quest refused</li>
+        <li><strong>Mentor:</strong> Leveled up teammates through code reviews across 6+ enterprise projects</li>
       </ul>
+
       <p><strong>Inventory (Tech Stack):</strong></p>
       <ul>
         <li>Legendary Weapons: Java, Python, TypeScript, Scala</li>
-        <li>Armor: AWS CDK, Docker, Kubernetes</li>
+        <li>Armor: AWS CDK, Docker, Kubernetes, Terraform</li>
         <li>Spells: Spring Boot, FastAPI, React Native</li>
         <li>Scrolls: PostgreSQL, Oracle, DynamoDB</li>
+        <li>Potions: Kafka, Spark, Airflow</li>
       </ul>
+
       <p><strong>Current Quest:</strong> Building reliable, scalable systems and shipping code that matters. The adventure continues...</p>
+      <p><strong>Power Level:</strong> Over 9000 (and counting)</p>
     `,
     profileColor: 'yellow'
   }
