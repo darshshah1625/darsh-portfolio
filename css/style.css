@@ -310,6 +310,86 @@ body {
   background-color: rgba(109, 109, 110, 0.9);
 }
 
+/* === Open to Work Badge === */
+.open-to-work {
+  display: inline-block;
+  background: #10cc52;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 204, 82, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 204, 82, 0); }
+}
+
+/* === Impact Metrics Strip === */
+.metrics-strip {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #141414 100%);
+  flex-wrap: wrap;
+}
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+}
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e50914;
+  line-height: 1;
+}
+.metric-label {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === Companies Strip === */
+.companies-strip {
+  text-align: center;
+  padding: 20px 20px 30px;
+}
+.companies-label {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+.companies-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.company-tag {
+  padding: 8px 20px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.company-tag:hover {
+  border-color: #e50914;
+  color: #fff;
+}
+
 /* === Top Picks Row (matching netflix TopPicksRow.css) === */
 .top-picks-row {
   margin: 20px 0;
@@ -1106,8 +1186,43 @@ body {
   }
   .banner-button {
     width: auto;
-    padding: 10px 15px;
-    font-size: 0.9rem;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  .banner-buttons {
+    flex-wrap: wrap;
+  }
+  .open-to-work {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Metrics mobile */
+  .metrics-strip {
+    gap: 15px;
+    padding: 25px 15px;
+  }
+  .metric-card {
+    min-width: 45%;
+  }
+  .metric-number {
+    font-size: 2rem;
+  }
+  .metric-label {
+    font-size: 0.75rem;
+  }
+
+  /* Companies mobile */
+  .companies-strip {
+    padding: 15px 10px 20px;
+  }
+  .companies-row {
+    gap: 8px;
+  }
+  .company-tag {
+    padding: 6px 14px;
+    font-size: 0.8rem;
   }
 
   /* Top Picks mobile */
