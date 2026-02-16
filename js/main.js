@@ -534,6 +534,7 @@ window.addEventListener('DOMContentLoaded', () => {
       profileSelection.classList.remove('active');
       profileSelection.style.display = 'none';
       const mainContent = document.getElementById('mainContent');
+      mainContent.style.display = '';
       mainContent.classList.add('active');
       window.scrollTo(0, 0);
     });
