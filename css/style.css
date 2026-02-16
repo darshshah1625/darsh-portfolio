@@ -1074,26 +1074,30 @@ body {
   /* Banner mobile */
   .profile-page {
     height: auto;
-    min-height: 100vh;
-    padding-bottom: 2rem;
+    min-height: 70vh;
   }
   .profile-banner {
-    padding: 60px 15px 20px;
-    align-items: center;
-    justify-content: center;
+    padding: 0 15px 20px;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  .profile-banner::before {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.7) 100%);
   }
   .banner-content {
     max-width: 100%;
-    padding: 20px 0;
+    padding: 0 5px;
+    padding-top: 80px;
   }
   .banner-headline {
-    font-size: 1.6rem;
-    margin-top: 5rem;
+    font-size: 1.5rem;
+    margin-top: 0;
     line-height: 1.3;
   }
   .banner-description {
     line-height: 1.5;
     font-size: 12px;
+    margin-bottom: 15px;
   }
   .banner-buttons {
     display: flex;
