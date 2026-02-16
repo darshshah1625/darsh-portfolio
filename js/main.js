@@ -3,62 +3,48 @@
 // ============================================================
 const profileContent = {
   recruiter: {
-    headline: 'Elite Software Engineer with Proven Impact at Scale',
-    description: 'SDE II @ Amazon Web Services | 4+ Years | M.S. Computer Science (3.82 GPA) | AWS Certified | 20M+ LOC Delivered',
+    headline: 'Software Engineer Who Ships Fast and Scales Faster',
+    description: 'SDE II @ Amazon Web Services | 4+ Years | M.S. Computer Science (3.82 GPA) | AWS Certified Solutions Architect',
     aboutContent: `
       <p><strong>Current Role:</strong> Software Development Engineer II at Amazon Web Services (Promoted 2024)</p>
-      <p><strong>Professional Impact:</strong></p>
+      <p><strong>What I Bring:</strong></p>
       <ul>
-        <li><strong>Led AWS Transform:</strong> Architected the world's first agentic AI platform for mainframe modernization</li>
-        <li><strong>Enterprise Scale:</strong> Delivered 20M+ lines of code transformations for 23+ Fortune 500 companies</li>
-        <li><strong>Innovation:</strong> Built production Claude AI-based refactoring service processing millions of LOC</li>
-        <li><strong>Performance:</strong> Achieved 98.8% reduction in database restore time (4 hours to 3 minutes)</li>
-        <li><strong>Reliability:</strong> Maintained 99.99% uptime while handling 12+ P1 incidents weekly as on-call engineer</li>
+        <li>4+ years building production backend services, cloud infrastructure, and AI-powered tooling at enterprise scale</li>
+        <li>Promoted to SDE II in 2.5 years — consistently delivered high-impact projects across distributed systems, CI/CD, and full-stack development</li>
+        <li>Reduced critical database restore times by 98.8% through automation and smart architecture</li>
+        <li>Maintained 99.99% uptime managing 12+ P1 incidents weekly as on-call engineer</li>
+        <li>Built and shipped mobile apps, data pipelines, and cloud-native services across multiple teams and tech stacks</li>
       </ul>
-      <p><strong>Education:</strong></p>
-      <ul>
-        <li>M.S. Computer Science - University of Texas at Dallas (GPA: 3.82/4.0)</li>
-        <li>B.E. Computer Engineering - Gujarat Technological University (GPA: 8.46/10)</li>
-      </ul>
-      <p><strong>Certifications:</strong> AWS Certified Solutions Architect - Associate (Dec 2024)</p>
-      <p><strong>Core Competencies:</strong></p>
-      <ul>
-        <li>Agentic AI & LLM Integration (Claude, Amazon Bedrock)</li>
-        <li>Distributed Systems & Cloud Architecture (AWS CDK, Multi-region)</li>
-        <li>Full-Stack Development (Java, Python, TypeScript, Scala)</li>
-        <li>Database Systems (PostgreSQL, Oracle, DynamoDB)</li>
-        <li>DevOps & Infrastructure (Docker, Kubernetes, Terraform)</li>
-      </ul>
-      <p><strong>Career Trajectory:</strong> Rapid promotion from SDE I to SDE II in 2.5 years. Consistently delivered high-impact projects exceeding expectations. Recognized as technical leader in AI-driven modernization.</p>
+      <p><strong>Education:</strong> M.S. Computer Science - UT Dallas (3.82 GPA) | B.E. Computer Engineering - GTU (8.46/10)</p>
+      <p><strong>Certifications:</strong> AWS Certified Solutions Architect (Dec 2024)</p>
     `,
     profileColor: 'blue'
   },
   developer: {
-    headline: 'Pioneering the Future of AI-Driven Software Transformation',
-    description: 'Elite SDE II @ AWS | Architect of the world\'s first agentic AI mainframe modernization platform | Transforming 20M+ LOC for Fortune 500',
+    headline: 'I Write Backend Systems That Don\'t Break at 3 AM',
+    description: 'SDE II @ AWS | Java, Python, TypeScript | Distributed Systems, Cloud Infra, AI/ML | Full-Stack Problem Solver',
     aboutContent: `
-      <p>I'm Darsh Shah - a Software Development Engineer II at Amazon Web Services, pioneering the future of enterprise software transformation.</p>
-      <p><strong>What I Do:</strong> I architect and build cutting-edge multi-agent AI systems that autonomously modernize legacy enterprise applications. My work on AWS Transform has revolutionized how Fortune 500 companies approach mainframe modernization.</p>
-      <p><strong>Technical Excellence:</strong> Master of distributed systems, cloud architecture, and agentic AI. I've designed production systems processing 20M+ lines of code, serving 23+ enterprise clients with 99.99% uptime.</p>
-      <p><strong>Innovation:</strong> Created the first-ever Claude AI-powered code refactoring service at enterprise scale. Built A2A (Agent-to-Agent) protocols enabling real-time multi-agent orchestration. Reduced critical infrastructure recovery time by 98.8%.</p>
-      <p><strong>Tech Stack Mastery:</strong> Java, Python, TypeScript, Scala | AWS (CDK, Lambda, Bedrock, ECS) | Claude AI, FastAPI | PostgreSQL, Oracle, DynamoDB | Docker, Kubernetes, Terraform | Apache Kafka, Spark, Airflow</p>
-      <p><strong>Current Focus:</strong> Pushing the boundaries of LLM orchestration, building fault-tolerant distributed AI systems, and making the impossible possible at cloud scale.</p>
+      <p>Hey, I'm Darsh. I'm a Software Development Engineer II at AWS who genuinely enjoys building things that work at scale.</p>
+      <p><strong>Day to Day:</strong> I design and build backend services, automate infrastructure with CDK, write CI/CD pipelines, and occasionally wrangle LLMs into doing useful things. I've worked across Java, Python, TypeScript, and Scala — whatever the problem needs.</p>
+      <p><strong>Things I've Built:</strong> Database automation tools that cut restore times from hours to minutes. CI/CD architectures serving multiple enterprise projects. EC2 lifecycle management saving 50% on infra costs. Mobile apps with React Native. Data pipelines processing 100+ TB with PySpark.</p>
+      <p><strong>How I Work:</strong> I care about clean APIs, reliable systems, and code that the next person can actually read. I write tests, I review PRs thoroughly, and I don't shy away from on-call.</p>
+      <p><strong>Stack:</strong> Java, Python, TypeScript, Scala | AWS (CDK, ECS, Lambda, Bedrock) | Spring Boot, FastAPI, React Native | PostgreSQL, Oracle, DynamoDB | Docker, Kubernetes | Kafka, Spark</p>
     `,
     profileColor: 'grey'
   },
   stalker: {
-    headline: 'The Legend Who Codes While Others Sleep',
-    description: 'Elite Problem Solver | Production Hero | AWS Wizard | Coffee-Powered Code Machine',
+    headline: 'The Guy Who Deploys on Fridays — And Lives to Tell',
+    description: 'Production Survivor | On-Call Veteran | Coffee-Powered Code Machine',
     aboutContent: `
       <p>Alright, you caught me. Let me tell you who I really am...</p>
-      <p><strong>The Real Deal:</strong> I'm that engineer who's saved production more times than I can count. While everyone's asleep, I'm the one debugging critical issues, deploying hotfixes, and making sure 23+ Fortune 500 companies don't wake up to disasters.</p>
+      <p><strong>The Real Deal:</strong> I'm that engineer who gets paged at 2 AM and actually fixes the issue before going back to sleep. Production incidents? Handled 12 a week. Database down? I built a tool that restores it in 3 minutes instead of 4 hours.</p>
       <p><strong>War Stories:</strong></p>
       <ul>
         <li>Reduced DB restore from 4 hours to 3 minutes (yes, really)</li>
-        <li>Built an AI that refactors 10M+ lines of code (it works, I swear)</li>
+        <li>Automated infra provisioning so hard my team forgot what manual deployment felt like</li>
         <li>Handle 12 P1 incidents per week and still have time for memes</li>
-        <li>My code runs on systems processing billions of transactions</li>
         <li>Deployed to production on a Friday (and lived to tell the tale)</li>
+        <li>Built mobile apps, data pipelines, and cloud services — sometimes in the same sprint</li>
       </ul>
       <p><strong>Daily Routine:</strong></p>
       <ul>
@@ -68,41 +54,38 @@ const profileContent = {
         <li>GitHub contributions: Green squares for days</li>
         <li>Stack Overflow: Read-only mode (I answer in production)</li>
       </ul>
-      <p><strong>Achievement Unlocked:</strong> Built systems that transform enterprise software at scale, survived countless on-call rotations, and still love what I do.</p>
       <p><strong>Location:</strong> Dallas, TX (but my code runs everywhere)</p>
-      <p><strong>Mission:</strong> Making legacy code cool again, one AI agent at a time.</p>
+      <p><strong>Mission:</strong> Build reliable systems, automate everything, and never let production go down on my watch.</p>
     `,
     profileColor: 'red'
   },
   adventurer: {
-    headline: 'The Epic Saga of a Code Warrior',
-    description: 'Quest: Conquer Legacy Systems | Class: AI Architect | Guild: Amazon Web Services | Level: 99',
+    headline: 'Level 99 Engineer — Main Quest: Ship or Be Shipped',
+    description: 'Quest: Build Unbreakable Systems | Class: Full-Stack Engineer | Guild: Amazon Web Services | Level: 99',
     aboutContent: `
       <p><strong>Welcome, Traveler! This is my epic journey...</strong></p>
       <p><strong>Chapter I: The Beginning (2015-2019)</strong></p>
       <p>Born in the ancient lands of Gujarat, India. Trained in the sacred arts of Computer Engineering. Defeated the final boss: Bachelor's Degree. Unlocked skill: Problem Solving.</p>
       <p><strong>Chapter II: The Quest for Knowledge (2020-2022)</strong></p>
-      <p>Journeyed across the seas to Dallas, Texas. Entered the legendary University of Texas at Dallas. Mastered advanced Computer Science techniques. Boss defeated: Master's Thesis (Critical Hit: 3.82 GPA). Unlocked skill: Advanced Algorithms.</p>
+      <p>Journeyed across the seas to Dallas, Texas. Entered the legendary University of Texas at Dallas. Mastered advanced Computer Science techniques. Boss defeated: Master's Thesis (Critical Hit: 3.82 GPA). Side quests completed at AT&T Labs and Copart.</p>
       <p><strong>Chapter III: The AWS Saga (2022-Present)</strong></p>
-      <p>Joined the elite guild of Amazon Web Services. Current rank: Software Development Engineer II. Main quest: Building AI systems that transform the digital realm.</p>
+      <p>Joined the elite guild of Amazon Web Services. Current rank: Software Development Engineer II. Main quest: Building distributed systems and AI-powered tools that serve Fortune 500 clients.</p>
       <p><strong>Legendary Achievements Unlocked:</strong></p>
       <ul>
-        <li><strong>Dragon Slayer:</strong> Defeated 20M+ lines of legacy COBOL code</li>
-        <li><strong>Guardian:</strong> Protected 23+ enterprise fortresses from modernization failures</li>
-        <li><strong>Archmage:</strong> Mastered the dark arts of LLM orchestration and multi-agent systems</li>
         <li><strong>Speed Demon:</strong> Reduced dungeon clear time by 98.8% (4 hours to 3 minutes)</li>
         <li><strong>Cloud Master:</strong> Conquered the AWS realm (Certified Solutions Architect)</li>
-        <li><strong>AI Whisperer:</strong> Built the first agentic AI platform for enterprise transformation</li>
+        <li><strong>Infrastructure Mage:</strong> Automated CI/CD pipelines reducing manual deployment by 90%</li>
+        <li><strong>Guardian:</strong> Maintained 99.99% uptime defending production servers</li>
+        <li><strong>Multi-Class:</strong> Backend, mobile, data pipelines, cloud infra — no quest refused</li>
       </ul>
       <p><strong>Inventory (Tech Stack):</strong></p>
       <ul>
         <li>Legendary Weapons: Java, Python, TypeScript, Scala</li>
         <li>Armor: AWS CDK, Docker, Kubernetes</li>
-        <li>Magic: Claude AI, Amazon Bedrock, FastAPI</li>
+        <li>Spells: Spring Boot, FastAPI, React Native</li>
         <li>Scrolls: PostgreSQL, Oracle, DynamoDB</li>
       </ul>
-      <p><strong>Current Quest:</strong> Building agentic AI systems that make legacy code modernization not just possible, but legendary. The adventure continues...</p>
-      <p><strong>Power Level:</strong> Over 9000 (and counting)</p>
+      <p><strong>Current Quest:</strong> Building reliable, scalable systems and shipping code that matters. The adventure continues...</p>
     `,
     profileColor: 'yellow'
   }
@@ -113,30 +96,30 @@ const profileContent = {
 // ============================================================
 const topPicksConfig = {
   recruiter: [
-    { title: 'Skills', img: 'https://picsum.photos/seed/skills/250/200', target: 'skills' },
-    { title: 'Experience', img: 'https://picsum.photos/seed/workexperience/250/200', target: 'work-experience' },
-    { title: 'Projects', img: 'https://picsum.photos/seed/projects/250/200', target: 'projects' },
-    { title: 'Certifications', img: 'https://picsum.photos/seed/certifications/250/200', target: 'certifications' },
-    { title: 'Contact Me', img: 'https://picsum.photos/seed/contact/250/200', target: 'contact' }
+    { title: 'Skills', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop', target: 'skills' },
+    { title: 'Experience', img: 'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=400&h=300&fit=crop', target: 'work-experience' },
+    { title: 'Projects', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', target: 'projects' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop', target: 'certifications' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop', target: 'contact' }
   ],
   developer: [
-    { title: 'Skills', img: 'https://picsum.photos/seed/coding/250/200', target: 'skills' },
-    { title: 'Projects', img: 'https://picsum.photos/seed/development/250/200', target: 'projects' },
-    { title: 'Certifications', img: 'https://picsum.photos/seed/badge/250/200', target: 'certifications' },
-    { title: 'Experience', img: 'https://picsum.photos/seed/work/250/200', target: 'work-experience' },
-    { title: 'Contact Me', img: 'https://picsum.photos/seed/connect/250/200', target: 'contact' }
+    { title: 'Skills', img: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=300&fit=crop', target: 'skills' },
+    { title: 'Projects', img: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=300&fit=crop', target: 'projects' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop', target: 'certifications' },
+    { title: 'Experience', img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop', target: 'work-experience' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=400&h=300&fit=crop', target: 'contact' }
   ],
   stalker: [
-    { title: 'Contact Me', img: 'https://picsum.photos/seed/call/250/200', target: 'contact' },
-    { title: 'Projects', img: 'https://picsum.photos/seed/planning/250/200', target: 'projects' },
-    { title: 'Experience', img: 'https://picsum.photos/seed/resume/250/200', target: 'work-experience' },
-    { title: 'Certifications', img: 'https://picsum.photos/seed/achievements/250/200', target: 'certifications' }
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=400&h=300&fit=crop', target: 'contact' },
+    { title: 'Projects', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop', target: 'projects' },
+    { title: 'Experience', img: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=400&h=300&fit=crop', target: 'work-experience' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop', target: 'certifications' }
   ],
   adventurer: [
-    { title: 'Projects', img: 'https://picsum.photos/seed/innovation/250/200', target: 'projects' },
-    { title: 'About', img: 'https://picsum.photos/seed/books/250/200', target: 'about' },
-    { title: 'Contact Me', img: 'https://picsum.photos/seed/connect2/250/200', target: 'contact' },
-    { title: 'Certifications', img: 'https://picsum.photos/seed/medal/250/200', target: 'certifications' }
+    { title: 'Projects', img: 'https://images.unsplash.com/photo-1537432376149-e84978e48784?w=400&h=300&fit=crop', target: 'projects' },
+    { title: 'About', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop', target: 'about' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop', target: 'contact' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', target: 'certifications' }
   ]
 };
 
@@ -145,23 +128,23 @@ const topPicksConfig = {
 // ============================================================
 const continueWatchingConfig = {
   recruiter: [
-    { title: 'About', img: 'https://picsum.photos/id/1025/300/200', target: 'about' },
-    { title: 'Certifications', img: 'https://picsum.photos/id/1026/300/200', target: 'certifications' },
-    { title: 'Contact Me', img: 'https://picsum.photos/id/1029/300/200', target: 'contact' }
+    { title: 'About', img: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300&h=200&fit=crop', target: 'about' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=200&fit=crop', target: 'certifications' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=300&h=200&fit=crop', target: 'contact' }
   ],
   developer: [
-    { title: 'About', img: 'https://picsum.photos/id/1025/300/200', target: 'about' },
-    { title: 'Certifications', img: 'https://picsum.photos/id/1028/300/200', target: 'certifications' },
-    { title: 'Contact Me', img: 'https://picsum.photos/id/1029/300/200', target: 'contact' }
+    { title: 'About', img: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=300&h=200&fit=crop', target: 'about' },
+    { title: 'Certifications', img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop', target: 'certifications' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300&h=200&fit=crop', target: 'contact' }
   ],
   stalker: [
-    { title: 'About', img: 'https://picsum.photos/id/1026/300/200', target: 'about' },
-    { title: 'Contact Me', img: 'https://picsum.photos/id/1029/300/200', target: 'contact' }
+    { title: 'About', img: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=300&h=200&fit=crop', target: 'about' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=300&h=200&fit=crop', target: 'contact' }
   ],
   adventurer: [
-    { title: 'About', img: 'https://picsum.photos/id/1025/300/200', target: 'about' },
-    { title: 'Skills', img: 'https://picsum.photos/id/1026/300/200', target: 'skills' },
-    { title: 'Contact Me', img: 'https://picsum.photos/id/1029/300/200', target: 'contact' }
+    { title: 'About', img: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=300&h=200&fit=crop', target: 'about' },
+    { title: 'Skills', img: 'https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=300&h=200&fit=crop', target: 'skills' },
+    { title: 'Contact Me', img: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=300&h=200&fit=crop', target: 'contact' }
   ]
 };
 
@@ -215,25 +198,25 @@ const projectsData = [
     title: 'ATX Reforge',
     description: 'Agentic AI Platform for enterprise mainframe modernization. Led architecture of multi-agent system processing 10M+ lines of code for 23+ Fortune 500 companies.',
     tech: ['Java', 'Python', 'AWS', 'Claude AI', 'FastAPI'],
-    image: 'https://picsum.photos/seed/atxreforge/600/400'
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop'
   },
   {
     title: 'RTS Manager',
     description: 'Database restoration automation tool that reduced restore time by 98.8% — from 4 hours to just 3 minutes.',
     tech: ['Java', 'AWS', 'PostgreSQL', 'Docker'],
-    image: 'https://picsum.photos/seed/rtsmanager/600/400'
+    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop'
   },
   {
     title: 'AWS Blu Age SDE',
     description: 'Cloud infrastructure platform achieving 50% cost reduction with multi-region deployment capabilities.',
     tech: ['TypeScript', 'AWS CDK', 'Lambda', 'ECS'],
-    image: 'https://picsum.photos/seed/bluage/600/400'
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop'
   },
   {
     title: 'A2A Protocol',
     description: 'Multi-agent system with real-time synchronization enabling distributed AI agent communication.',
     tech: ['Python', 'FastAPI', 'Kafka', 'Docker'],
-    image: 'https://picsum.photos/seed/a2aprotocol/600/400'
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop'
   }
 ];
 
@@ -256,6 +239,22 @@ const timelineData = [
     date: '2022 - 2024',
     tech: 'Java, TypeScript, AWS, PostgreSQL, Docker',
     description: 'Built RTS Manager reducing DB restore time by 98.8%. Managed 12+ P1 incidents/week as on-call engineer with 99.99% uptime.'
+  },
+  {
+    type: 'work',
+    title: 'Software Development Intern',
+    company: 'Copart',
+    date: 'Aug 2021 - Jan 2022',
+    tech: 'React Native, TypeScript, iOS, Android',
+    description: 'Developed and scaled React Native apps serving thousands of daily users with 100% feature parity across iOS and Android. Reduced app load times by 40% through lazy loading and image caching.'
+  },
+  {
+    type: 'work',
+    title: 'Software Development Intern',
+    company: 'AT&T Labs',
+    date: 'Jun 2021 - Aug 2021',
+    tech: 'PySpark, Python, Data Pipelines',
+    description: 'Architected scalable data processing infrastructure for 5G network monitoring. Streamlined pipelines for 100+ TB of data, accelerating processing speed by 30x (15 hours to 30 minutes).'
   },
   {
     type: 'education',
@@ -446,6 +445,7 @@ function goBackToProfiles() {
     mainContent.style.opacity = '';
     mainContent.style.transform = '';
     mainContent.style.transition = '';
+    profileSelection.style.display = '';
     profileSelection.classList.add('active');
     window.scrollTo(0, 0);
   }, 300);
