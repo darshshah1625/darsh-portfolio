@@ -535,6 +535,8 @@ window.addEventListener('DOMContentLoaded', () => {
       profileSelection.style.display = 'none';
       const mainContent = document.getElementById('mainContent');
       mainContent.style.display = '';
+      mainContent.classList.remove('active');
+      void mainContent.offsetWidth; // force reflow to restart CSS animation
       mainContent.classList.add('active');
       window.scrollTo(0, 0);
     });
