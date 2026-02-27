@@ -211,7 +211,7 @@ const skillsData = {
 const projectsData = [
   {
     title: 'ATX Reforge',
-    description: 'Agentic AI Platform for enterprise mainframe modernization. Led architecture of multi-agent system processing 10M+ lines of code for 23+ Fortune 500 companies.',
+    description: 'Agentic AI Platform for enterprise mainframe modernization. Contributed to architecture of multi-agent system processing 10M+ lines of code for 23+ Fortune 500 companies.',
     tech: ['Java', 'Python', 'AWS', 'Claude AI', 'FastAPI'],
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop'
   },
@@ -222,8 +222,8 @@ const projectsData = [
     image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop'
   },
   {
-    title: 'AWS Blu Age SDE',
-    description: 'Cloud infrastructure platform achieving 50% cost reduction with multi-region deployment capabilities.',
+    title: 'Stratus',
+    description: 'Cloud-native infrastructure delivery platform enabling multi-region deployments at scale. Achieved 50% cost reduction through intelligent resource orchestration and CDK-based automation.',
     tech: ['TypeScript', 'AWS CDK', 'Lambda', 'ECS'],
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop'
   },
@@ -232,6 +232,18 @@ const projectsData = [
     description: 'Multi-agent system with real-time synchronization enabling distributed AI agent communication.',
     tech: ['Python', 'FastAPI', 'Kafka', 'Docker'],
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop'
+  },
+  {
+    title: 'RetroForge',
+    description: 'Open-source 2D game development toolkit built on the OpenClaw engine. Extended the C++/SDL2 runtime with a custom level editor, hot-reload asset pipeline, and Python scripting layer — cutting level iteration time by 60%.',
+    tech: ['C++', 'SDL2', 'OpenClaw', 'Python', 'CMake'],
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&fit=crop'
+  },
+  {
+    title: 'SentinelMesh',
+    description: 'Distributed observability platform with autonomous self-healing capabilities. Monitors 500+ microservices in real-time, auto-triggers rollbacks on anomaly detection, and reduced mean time to recovery by 73% across 8 production environments.',
+    tech: ['Java', 'Kafka', 'Prometheus', 'Kubernetes', 'Python'],
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop'
   }
 ];
 
